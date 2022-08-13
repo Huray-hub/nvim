@@ -69,6 +69,5 @@ packer.startup(function()
 end)
 
 require('./packages')
-if status_ok then
-  vim.cmd("colorscheme melange")
-end 
+
+-- vim.cmd("colorscheme melange")

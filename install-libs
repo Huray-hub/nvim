@@ -1,0 +1,40 @@
+#   ________   _______   ________  ___      ___ ___  _____ ______      
+#  |\   ___  \|\  ___ \ |\   __  \|\  \    /  /|\  \|\   _ \  _   \    
+#  \ \  \\ \  \ \   __/|\ \  \|\  \ \  \  /  / | \  \ \  \\\__\ \  \   
+#   \ \  \\ \  \ \  \_|/_\ \  \\\  \ \  \/  / / \ \  \ \  \\|__| \  \  
+#    \ \  \\ \  \ \  \_|\ \ \  \\\  \ \    / /   \ \  \ \  \    \ \  \ 
+#     \ \__\\ \__\ \_______\ \_______\ \__/ /     \ \__\ \__\    \ \__\
+#      \|__| \|__|\|_______|\|_______|\|__|/       \|__|\|__|     \|__|
+#
+# RUNS THIS SCRIPT WITH SUDO PREVILEGES IF YOU ARE IN ARCH/DEBIAN! 
+# IN MAC YOUR PASSWORD WILL BE ASKED LATER FROM THAT DAMN RUBY PACKAGE MANAGER
+
+libs_installed=false
+
+shared_libs="git wget curl ripgrep python3 go npm luarocks ruby php julia composer bash"
+
+if [[ $OSTYPE == 'darwin'* ]]; then
+    brew install $shared_libs && libs_installed=true
+else
+
+    [ -f "/etc/arch-release" ] && pacman -Syu base-devel $shared_libs tree-sitter jdk-openjdk fd && libs_installed=true
+        
+    [ -f "/etc/debian-version" ] \
+        && apt-get -y update \
+        && apt-get -y upgrade \
+        && apt-get -y install $shared_libs tree-sitter jdk-openjdk fd \
+        && libs_installed=true
+
+fi
+
+#todo, mac is not detecting things outside of this directory
+[ -d "~/.cargo" ] && echo "🦀 rust exists  skipping 🦀" || curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+[ libs_installed ] \
+    && npm install -g neovim \
+    && python3 -m pip install --upgrade pip && python3 -m pip install neovim \
+    && echo "Ruby needs sudo previleges :/" && sudo gem install neovim
+
+[ !libs_installed ] && echo -e "Script failed. please re-run." && exit 1 
+
+echo -e "Script finished. Try open neovim carefully.\n run :PackerSync, next do :checkhealth,\n if there is an error you can solve it in your own :)"

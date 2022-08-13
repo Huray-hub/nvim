@@ -9,7 +9,7 @@ tree.setup({
     create_in_closed_folder = false,
     disable_netrw = true,
     hijack_netrw = true,
-    open_on_setup = true,
+    open_on_setup = false,
     ignore_ft_on_setup = {
         'startify',
         'dashboard',
