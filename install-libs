@@ -6,7 +6,7 @@
 #     \ \__\\ \__\ \_______\ \_______\ \__/ /     \ \__\ \__\    \ \__\
 #      \|__| \|__|\|_______|\|_______|\|__|/       \|__|\|__|     \|__|
 #
-# RUNS THIS SCRIPT WITH SUDO PREVILEGES IF YOU ARE IN ARCH/DEBIAN! 
+# RUN THIS SCRIPT WITH SUDO PREVILEGES IF YOU ARE IN ARCH/DEBIAN! 
 # IN MAC YOUR PASSWORD WILL BE ASKED LATER FROM THAT DAMN RUBY PACKAGE MANAGER
 
 libs_installed=false
