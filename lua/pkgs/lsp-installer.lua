@@ -23,6 +23,8 @@ servers['gopls'] = require('pkgs.lsps.gopls')
 
 -- TODO , fix this damn thing not working
 
+vim.cmd("let g:loaded_perl_provider = 0")
+
 lsp_installer.on_server_ready(function(server)
     local opts = {
       on_attach = require('pkgs.lsp-config').on_attach,
@@ -31,6 +33,9 @@ lsp_installer.on_server_ready(function(server)
 
     for index, key in ipairs(servers) do        
         opts = vim.tbl_deep_extend('force', key, opts) 
+
+        lsp_installer[key].setup()
+
     end  
-    server:setup(opts)
+    -- server:setup(opts)
 end) 

@@ -3,7 +3,7 @@
 Installation requirements:
 - Make sure you have neovim stable installed
 - `sudo/doas ./install-libs` for GNU/Linux (in Mac dont use sudo)
-- Get on NeoVim and run :PackerSync
+- Get on NeoVim and run :PackerSync then :TSUpdate
 - Reboot NeoVim
 - Done!
 
