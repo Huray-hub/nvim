@@ -51,17 +51,6 @@ local function lsp_keymaps(bufnr)
         vim.diagnostic.goto_next({ border = 'rounded' })
     end)
 
-    --[[
-        buf_keymap('n', '<leader>q', vim.diagnostic.setloclist)
-        buf_keymap('n', '<leader>a', function()
-            command('CodeActionMenu')
-        end)
-
-        buf_keymap('v', '<leader>a', function()
-            command('CodeActionMenu')
-        end)
-    --]]
-
     create_command('Format', vim.lsp.buf.formatting, { bang = true })
 end
 

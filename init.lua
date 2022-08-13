@@ -8,6 +8,6 @@
 
 ]]--
 
-require("io/options")
-require("io/keybinds")
+require("options")
+require("keybinds")
 require("plugins") 

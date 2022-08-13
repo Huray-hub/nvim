@@ -1,28 +1,10 @@
-libs = {
-    './pkgs/lsp-installer',
-    './pkgs/tree-sitter',
-    './pkgs/telescope',
-    './pkgs/nvim-tree',
-    './pkgs/cmp',
-    './pkgs/presence',
-    './pkgs/lsp-config',
-    './pkgs/alpha',
-    './pkgs/project',
-    './pkgs/which-key'
-}
-
-for index, item in ipairs(libs) do 
-
-    local status_ok, lib = pcall(require, item)
-    if not status_ok then 
-        return 'Error. ' + lib + ' broke.'
-    end
-
-    if item == './pkgs/lsp-config' then 
-        -- Sorry hardcoded :/
-        local lib_ok, _ = lib.setup()
-        if not lib_ok then
-            return "Could not setup lsp-config"
-        end
-    end
-end
+require'./pkgs/lsp-installer'
+require'./pkgs/tree-sitter'
+require'./pkgs/telescope'
+require'./pkgs/nvim-tree'
+require'./pkgs/cmp'
+require'./pkgs/presence'
+require'./pkgs/lsp-config'
+require'./pkgs/alpha'
+require'./pkgs/project'
+require'./pkgs/which-key'
