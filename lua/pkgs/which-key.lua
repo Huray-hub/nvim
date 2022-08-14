@@ -57,7 +57,7 @@ local setup = {
     -- hide mapping boilerplate
     hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ "}, 
   
-    show_help = false, -- show help message on the command line when the popup is visible
+    show_help = true, -- show help message on the command line when the popup is visible
     
     triggers = {"<leader>"}, -- or specify a list manually
     
@@ -65,32 +65,65 @@ local setup = {
 }
 
 local mappings = {
-    ['b'] = {
-        "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
-        'Buffers',
-    },
-    ['e'] = { '<cmd>NvimTreeToggle<cr>', 'Explorer' },
+    
+    -- Base 
     ['w'] = { '<cmd>w!<CR>', 'Save' },
+    ['Q'] = { '<cmd>qa!<CR>', 'Quit' },
     ['c'] = { '<cmd>Bdelete!<CR>', 'Close Buffer' },
     ['C'] = { '<cmd>silent! execute "%bd|e#|bd#"<CR>', 'Close all buffers but this' },
     ['h'] = { '<cmd>nohlsearch<CR>', 'No Highlight' },
+
+    -- NvimTree 
+    ['e'] = { '<cmd>NvimTreeToggle<cr>', 'Explorer' },
+
+    -- Telescope
+    ['F'] = { '<cmd>Telescope live_grep theme=ivy<cr>', 'Find Text' },
+    ['P'] = { '<cmd>Telescope projects<cr>', 'Projects' },
     ['f'] = {
         "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown({previewer = false}))<cr>",
         'Find files',
     },
-    ['F'] = { '<cmd>Telescope live_grep theme=ivy<cr>', 'Find Text' },
-    ['P'] = { '<cmd>Telescope projects<cr>', 'Projects' },
+
+    ['b'] = {
+        "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
+        'Buffers',
+    },
+
+
     ['r'] = { '<cmd>lua require("renamer").rename({empty = false})<cr>', 'Rename' },
     ['/'] = { '<cmd>lua require("Comment.api").toggle_current_linewise()<CR>', 'Comment' },
-    ['Q'] = { '<cmd>qa!<CR>', 'Quit' },
+    
 
-     p = {
+    p = {
         name = 'Packer',
         c = { '<cmd>PackerCompile<cr>', 'Compile' },
         i = { '<cmd>PackerInstall<cr>', 'Install' },
         s = { '<cmd>PackerSync<cr>', 'Sync' },
         S = { '<cmd>PackerStatus<cr>', 'Status' },
         u = { '<cmd>PackerUpdate<cr>', 'Update' },
+    },
+
+    g = {
+        name = 'Git',
+        g = { '<cmd>lua _LAZYGIT_TOGGLE()<CR>', 'Lazygit' },
+        j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", 'Next Hunk' },
+        k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", 'Prev Hunk' },
+        l = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", 'Blame' },
+        p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", 'Preview Hunk' },
+        r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", 'Reset Hunk' },
+        R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", 'Reset Buffer' },
+        s = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", 'Stage Hunk' },
+        u = {
+            "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>",
+            'Undo Stage Hunk',
+        },
+        o = { '<cmd>Telescope git_status<cr>', 'Open changed file' },
+        b = { '<cmd>Telescope git_branches<cr>', 'Checkout branch' },
+        c = { '<cmd>Telescope git_commits<cr>', 'Checkout commit' },
+        d = {
+            '<cmd>Gitsigns diffthis HEAD<cr>',
+            'Diff',
+        },
     },
 
     l = {

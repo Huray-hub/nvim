@@ -13,13 +13,13 @@ keymap('', '<Space>', '<Nop>')
 set_global_variable('mapleader', ' ')
 set_global_variable('maplocalleader', ' ')
 
+-- Window navigation 
 keymap('n', '<C-h>', '<C-w>h')
 keymap('n', '<C-j>', '<C-w>j')
 keymap('n', '<C-k>', '<C-w>k')
 keymap('n', '<C-l>', '<C-w>l')
-keymap('n', '<C-s>', ':w<CR>')
-keymap('i', '<C-s>', '<Esc>:w<CR>a')
 
+-- Window resize
 keymap('n', '<C-Up>', function()
     command('resize -2')
 end)
@@ -35,15 +35,3 @@ end)
 keymap('n', '<C-Right>', function()
     command('vertical resize +2')
 end)
-
-
-
-
-local telescope = "lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))"
-keymap('n', '<Leader>f', "<cmd>" .. telescope .. "<CR>")
-
-keymap('n', '<Leader>e', "NvimTreeToggle")
-
-
--- keymap('n', '<Space-f>', "<cmd>" .. telescope .. "<CR>")
-
