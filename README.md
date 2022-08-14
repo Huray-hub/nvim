@@ -40,7 +40,7 @@ CTRL + Right -> reduces window size vertically by -2
 
 ## Which-key
 This is your mainframe of keybinds <br>
-`[Disclaimer: It's case sensitive]`
+`[! Disclaimer: It's case sensitive ]`
 
 ![Screenshot 2022-08-14 at 5 45 59 PM](https://user-images.githubusercontent.com/30930688/184542493-4be476dc-4359-4e2c-b8ad-9f293c49581e.png)
 
