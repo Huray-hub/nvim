@@ -11,7 +11,7 @@
 
 libs_installed=false
 
-shared_libs="git wget curl ripgrep python3 go npm luarocks ruby php julia composer bash"
+shared_libs="htop git wget curl ripgrep python3 go npm luarocks ruby php julia composer bash"
 
 if [[ $OSTYPE == 'darwin'* ]]; then
     brew install $shared_libs && libs_installed=true

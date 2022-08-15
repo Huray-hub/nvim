@@ -1,4 +1,5 @@
 local fn = vim.fn
+
 local command = vim.api.nvim_command
 
 -- Automatically install packer
@@ -51,6 +52,8 @@ packer.startup(function()
     use 'andweeb/presence.nvim'
 
     use 'neovim/nvim-lspconfig' -- Configurations for Nvim LSP
+
+    use {"akinsho/toggleterm.nvim", tag = 'v2.*'}
 
     use {
       'nvim-telescope/telescope.nvim',

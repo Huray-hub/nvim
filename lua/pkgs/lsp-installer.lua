@@ -3,39 +3,105 @@ if not status_ok then
     return
 end
 
-local servers = {} 
-servers['sumneko_lua'] = require('pkgs.lsps.sumneko_lua')
-servers['pyright'] = require('pkgs.lsps.pyright') 
-servers['clangd'] = require('pkgs.lsps.clangd')
-servers['jsonls'] = require('pkgs.lsps.jsonls')
-servers['gopls'] = require('pkgs.lsps.gopls')
-
-
--- servers['bashls'] = "" 
--- servers['cmake'] = "" 
--- servers['dockerls'] = "" 
--- servers['eslint'] = "" 
--- servers['html'] = "" 
--- servers['jdtls'] = ""  
--- servers['rust_analyzer'] = "" 
--- servers['sqls'] = "" 
--- servers['yamlls'] = ""
-
--- TODO , fix this damn thing not working
-
 vim.cmd("let g:loaded_perl_provider = 0")
 
-lsp_installer.on_server_ready(function(server)
-    local opts = {
-      on_attach = require('pkgs.lsp-config').on_attach,
-      capabilities = require('pkgs.lsp-config').capabilities,
-    } 
+local servers = {
+    'bashls',
+    'clangd',
+    'pyright',
+    'jsonls',
+    'sqls',
+    'sumneko_lua',
+    'yamlls',
+    'omnisharp',
+    'gopls',
+    'rust_analyzer',
+}
 
-    for index, key in ipairs(servers) do        
-        opts = vim.tbl_deep_extend('force', key, opts) 
+local settings = {
+    ensure_installed = servers,
+    -- automatic_installation = false,
+    ui = {
+        icons = {
+            -- server_installed = "◍",
+            -- server_pending = "◍",
+            -- server_uninstalled = "◍",
+            -- server_installed = "✓",
+            -- server_pending = "➜",
+            -- server_uninstalled = "✗",
+        },
+        keymaps = {
+            toggle_server_expand = '<CR>',
+            install_server = 'i',
+            update_server = 'u',
+            check_server_version = 'c',
+            update_all_servers = 'U',
+            check_outdated_servers = 'C',
+            uninstall_server = 'X',
+        },
+    },
 
-        lsp_installer[key].setup()
+    log_level = vim.log.levels.INFO,
+    max_concurrent_installers = 4,
+}
 
-    end  
-    -- server:setup(opts)
-end) 
+lsp_installer.setup(settings) -- Register a handler that will be called for all installed servers.
+
+
+local lspconfig_status_ok, lspconfig = pcall(require, 'lspconfig')
+if not lspconfig_status_ok then
+    return
+end
+
+local on_attach = require('pkgs.lsp-config').on_attach
+
+local capabilities = require('pkgs.lsp-config').capabilities
+
+lspconfig['rust_analyzer'].setup{
+    on_attach = on_attach,
+    -- Server-specific settings...
+    settings = {
+      ["rust-analyzer"] = {}
+    }
+}
+
+lspconfig['sumneko_lua'].setup{
+    on_attach = on_attach,
+    -- Server-specific settings...
+    settings = {
+      ["sumneko_lua"] = {
+                settings = {
+                  Lua = {
+                    diagnostics = {
+                    globals = { 'vim', 'use' },
+                  },
+                  workspace = {
+                      library = {
+                          [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+                          [vim.fn.stdpath('config') .. '/lua'] = true,
+                      },
+                  },
+                },
+              },
+          picker = 'telescope',
+    }
+  }
+}
+
+lspconfig['pyright'].setup{
+    on_attach = on_attach,
+    -- Server-specific settings...
+    settings = {
+      ["pyright"] = require('pkgs.lsps.pyright')
+    }
+}
+
+lspconfig['gopls'].setup{
+    on_attach = on_attach,
+    -- Server-specific settings...
+    settings = {
+      ["gopls"] = require('pkgs.lsps.gopls')
+    }
+}
+
+-- lspconfig['clangd'].setup{}
