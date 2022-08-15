@@ -41,7 +41,7 @@ This is your mainframe of keybinds
 How to use:
 - Just press Leader key and then follow along the interface
 
-Disclaimer: It's case sensitive <br>\
+Disclaimer: It's case sensitive <br>
 
 Base 
 ```
