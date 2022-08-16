@@ -7,7 +7,6 @@ Installation requirements:
 - Reboot NeoVim
 - Done!
 
-
 If there's any significant error I am sure you can solve it in your own by using `:checkhealth`
 
 # Controls
@@ -59,7 +58,7 @@ Space + f = Opens telescope in search of files in current active directory
 Space + F = Opens telescope in search of text in current active directory
 Space + P = Opens Project 
 Space + b = Opens telescope in search of active buffers
-Space + r = Rename (Not Available)
+Space + r = Rename
 Space + / = Comment (Not Available)
 ```
 
