@@ -25,7 +25,7 @@ end
 packer.startup(function()
     use 'wbthomason/packer.nvim'
     
-    use 'savq/melange'
+    use 'folke/tokyonight.nvim'
     
     use 'nvim-treesitter/nvim-treesitter'
     
@@ -65,7 +65,12 @@ packer.startup(function()
       branch = 'master',
       requires = { {'nvim-lua/plenary.nvim'} }
     }
-
+    
+    use {
+      'nvim-lualine/lualine.nvim',
+      requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+    }
+    
     use {
       'kyazdani42/nvim-tree.lua',
       requires = {
@@ -77,9 +82,19 @@ packer.startup(function()
 
 end)
 
-if status_ok then
-  vim.cmd("colorscheme melange")
+local status_ok, lualine = pcall(require, 'lualine')
+if not status_ok then
+    return
+end 
+
+if status_ok then 
+  vim.cmd("colorscheme tokyonight")
 end
 
+lualine.setup {
+  options = {
+    theme = 'tokyonight'
+  }
+} 
 
 require('./packages')
