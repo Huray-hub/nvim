@@ -54,11 +54,11 @@ if not lspconfig_status_ok then
 end
 
 local on_attach = require('pkgs.lsp-config').on_attach
-
 local capabilities = require('pkgs.lsp-config').capabilities
 
 lspconfig['rust_analyzer'].setup{
     on_attach = on_attach,
+    capabilities = capabilities,
     -- Server-specific settings...
     settings = {
       ["rust-analyzer"] = {}
@@ -67,6 +67,7 @@ lspconfig['rust_analyzer'].setup{
 
 lspconfig['sumneko_lua'].setup{
     on_attach = on_attach,
+    capabilities = capabilities,
     -- Server-specific settings...
     settings = {
       ["sumneko_lua"] = {
@@ -90,6 +91,7 @@ lspconfig['sumneko_lua'].setup{
 
 lspconfig['pyright'].setup{
     on_attach = on_attach,
+    capabilities = capabilities,
     -- Server-specific settings...
     settings = {
       ["pyright"] = require('pkgs.lsps.pyright')
@@ -98,6 +100,7 @@ lspconfig['pyright'].setup{
 
 lspconfig['gopls'].setup{
     on_attach = on_attach,
+    capabilities = capabilities,
     -- Server-specific settings...
     settings = {
       ["gopls"] = require('pkgs.lsps.gopls')
