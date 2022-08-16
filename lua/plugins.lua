@@ -103,7 +103,7 @@ packer.startup(function()
   }
     end,
 	  wants = {'nvim-treesitter'}, -- or require if not used so far
-	  after = {'completion-nvim'} -- if a completion plugin is using tabs load it before
+	  after = {'nvim-cmp'} -- if a completion plugin is using tabs load it before
   }
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
