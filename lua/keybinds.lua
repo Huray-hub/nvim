@@ -8,6 +8,8 @@ local keymap = function(mode, lhs, rhs)
     vim.keymap.set(mode, lhs, rhs, opts)
 end
 
+local command = vim.api.nvim_command 
+
 -- Set Space as leader key
 keymap('', '<Space>', '<Nop>')
 set_global_variable('mapleader', ' ')
@@ -20,18 +22,26 @@ keymap('n', '<C-k>', '<C-w>k')
 keymap('n', '<C-l>', '<C-w>l')
 
 -- Window resize
-keymap('n', '<C-Up>', function()
+keymap('n', '<S-Up>', function()
     command('resize -2')
 end)
 
-keymap('n', '<C-Down>', function()
+keymap('n', '<S-Down>', function()
     command('resize +2')
 end)
 
-keymap('n', '<C-Left>', function()
+keymap('n', '<S-Left>', function()
     command('vertical resize -2')
 end)
 
-keymap('n', '<C-Right>', function()
+keymap('n', '<S-Right>', function()
     command('vertical resize +2')
+end)
+
+-- Navigate buffers
+keymap('n', '<S-l>', function()
+    command('bnext')
+end)
+keymap('n', '<S-h>', function()
+    command('bprevious')
 end)

@@ -26,13 +26,17 @@ CTRL + l -> Right
 
 ## Window Resize
 ```
-CTRL + Up -> reduces window size horizontally by -2
-CTRL + Down -> reduces window size horizontally by -2
-CTRL + Left -> reduces window size vertically by -2
-CTRL + Right -> reduces window size vertically by -2
+Shift + Up -> reduces window size horizontally by -2
+Shift + Down -> reduces window size horizontally by -2
+Shift + Left -> reduces window size vertically by -2
+Shift + Right -> reduces window size vertically by -2
 ```
-`[! Disclaimer: In MacOS these keybinds do not work because they are taken by the OS ]`
 
+## Change Tab 
+```
+Shift + h = Previous Tab 
+Shift + l = Next Tab
+```
 
 ## Which-key
 This is your mainframe of keybinds

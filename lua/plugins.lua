@@ -30,6 +30,8 @@ packer.startup(function()
     use 'nvim-treesitter/nvim-treesitter'
     
     use 'williamboman/nvim-lsp-installer'
+
+    use'akinsho/bufferline.nvim'   
     
     use 'hrsh7th/cmp-nvim-lsp'
     
