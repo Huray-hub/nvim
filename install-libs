@@ -11,7 +11,7 @@
 
 libs_installed=false
 
-shared_libs="htop git wget curl ripgrep python3 go npm luarocks ruby php julia composer bash"
+shared_libs="htop git wget curl ripgrep python3 go npm luarocks ruby php julia composer bash stylua"
 
 if [[ $OSTYPE == 'darwin'* ]]; then
     brew install $shared_libs && libs_installed=true
@@ -32,7 +32,7 @@ fi
 
 [ libs_installed ] \
     && npm install -g neovim \
-    && python3 -m pip install --upgrade pip && python3 -m pip install neovim \
+    && python3 -m pip install --upgrade pip && python3 -m pip install neovim black flake8 \
     && echo "Ruby needs sudo previleges :/" && sudo gem install neovim
 
 [ !libs_installed ] && echo -e "Script failed. please re-run." && exit 1 
