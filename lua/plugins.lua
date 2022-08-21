@@ -31,7 +31,9 @@ packer.startup(function()
     
     use 'williamboman/nvim-lsp-installer'
 
-    use'akinsho/bufferline.nvim'   
+    use 'akinsho/bufferline.nvim'   
+    
+    use 'jose-elias-alvarez/null-ls.nvim'
     
     use 'hrsh7th/cmp-nvim-lsp'
     
