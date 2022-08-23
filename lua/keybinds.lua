@@ -8,14 +8,14 @@ local keymap = function(mode, lhs, rhs)
     vim.keymap.set(mode, lhs, rhs, opts)
 end
 
-local command = vim.api.nvim_command 
+local command = vim.api.nvim_command
 
 -- Set Space as leader key
 keymap('', '<Space>', '<Nop>')
 set_global_variable('mapleader', ' ')
 set_global_variable('maplocalleader', ' ')
 
--- Window navigation 
+-- Window navigation
 keymap('n', '<C-h>', '<C-w>h')
 keymap('n', '<C-j>', '<C-w>j')
 keymap('n', '<C-k>', '<C-w>k')

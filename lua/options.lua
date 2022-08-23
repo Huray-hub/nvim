@@ -11,7 +11,7 @@ local options = {
     pumheight = 10, -- pop up menu height
     showmode = false, -- we don't need to see things like -- INSERT -- anymore
     showtabline = 2, -- always show tabs
-    termguicolors = true, 
+    termguicolors = true,
     smartcase = true, -- smart case
     smartindent = true, -- make indenting smarter again
     splitbelow = true, -- force all horizontal splits to go below current window
@@ -36,11 +36,8 @@ local options = {
 
 for k, v in pairs(options) do
     vim.opt[k] = v
-end 
+end
 vim.opt.shortmess:append('c')
 vim.opt.whichwrap:append('<', '>', '[', ']', 'h', 'l')
 vim.opt.iskeyword:append('-')
 vim.opt.formatoptions:remove('cro')
-
-
-

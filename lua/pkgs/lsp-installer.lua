@@ -3,7 +3,7 @@ if not status_ok then
     return
 end
 
-vim.cmd("let g:loaded_perl_provider = 0")
+vim.cmd('let g:loaded_perl_provider = 0')
 
 local servers = {
     'bashls',
@@ -47,7 +47,6 @@ local settings = {
 
 lsp_installer.setup(settings) -- Register a handler that will be called for all installed servers.
 
-
 local lspconfig_status_ok, lspconfig = pcall(require, 'lspconfig')
 if not lspconfig_status_ok then
     return
@@ -56,55 +55,49 @@ end
 local on_attach = require('pkgs.lsp-config').on_attach
 local capabilities = require('pkgs.lsp-config').capabilities
 
-lspconfig['rust_analyzer'].setup{
+lspconfig['rust_analyzer'].setup({
     on_attach = on_attach,
     capabilities = capabilities,
     -- Server-specific settings...
     settings = {
-      ["rust-analyzer"] = {}
-    }
-}
+        ['rust-analyzer'] = {},
+    },
+})
 
-lspconfig['sumneko_lua'].setup{
+lspconfig['sumneko_lua'].setup({
     on_attach = on_attach,
     capabilities = capabilities,
     -- Server-specific settings...
     settings = {
-      ["sumneko_lua"] = {
-                settings = {
-                  Lua = {
-                    diagnostics = {
-                    globals = { 'vim', 'use' },
-                  },
-                  workspace = {
-                      library = {
-                          [vim.fn.expand('$VIMRUNTIME/lua')] = true,
-                          [vim.fn.stdpath('config') .. '/lua'] = true,
-                      },
-                  },
+        Lua = {
+            diagnostics = {
+                globals = { 'vim', 'use', 'require', 'pcall', 'pairs' },
+            },
+            workspace = {
+                library = {
+                    [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+                    [vim.fn.stdpath('config') .. '/lua'] = true,
                 },
-              },
-          picker = 'telescope',
-    }
-  }
-}
+            },
+        },
+    },
+    picker = 'telescope',
+})
 
-lspconfig['pyright'].setup{
+lspconfig['pyright'].setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+    -- Server-specific settings...
+    settings = require('pkgs.lsps.pyright'),
+})
+
+lspconfig['gopls'].setup({
     on_attach = on_attach,
     capabilities = capabilities,
     -- Server-specific settings...
     settings = {
-      ["pyright"] = require('pkgs.lsps.pyright')
-    }
-}
-
-lspconfig['gopls'].setup{
-    on_attach = on_attach,
-    capabilities = capabilities,
-    -- Server-specific settings...
-    settings = {
-      ["gopls"] = require('pkgs.lsps.gopls')
-    }
-}
+        ['gopls'] = require('pkgs.lsps.gopls'),
+    },
+})
 
 -- lspconfig['clangd'].setup{}
