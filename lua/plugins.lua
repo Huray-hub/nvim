@@ -35,27 +35,23 @@ packer.startup(function()
 
 	use("jose-elias-alvarez/null-ls.nvim")
 
+	-- CMP
+	use("hrsh7th/nvim-cmp")
 	use("hrsh7th/cmp-nvim-lsp")
-
+	use("hrsh7th/cmp-cmdline")
 	use("hrsh7th/cmp-buffer")
-
 	use("hrsh7th/cmp-path")
+	use("saadparwaiz1/cmp_luasnip")
 
 	use("ahmedkhalf/project.nvim")
 
-	use("hrsh7th/cmp-cmdline")
-
-	use("hrsh7th/nvim-cmp")
-
 	use("goolord/alpha-nvim")
-
-	use("saadparwaiz1/cmp_luasnip")
 
 	use("L3MON4D3/LuaSnip")
 
 	use("andweeb/presence.nvim")
 
-	use("neovim/nvim-lspconfig") -- Configurations for Nvim LSP
+	use("neovim/nvim-lspconfig")
 
 	use({ "akinsho/toggleterm.nvim", tag = "v2.*" })
 
